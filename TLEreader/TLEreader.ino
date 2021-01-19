@@ -9,8 +9,8 @@
 
 xOD01 OD01; // instance of the OD01 object (zip library must be included in sketch)
 
-const char* ssid = "ASUS";               // your network SSID (name)
-const char* pass = "bravehill825";             // your network password
+const char* ssid = "";               // your network SSID (name)
+const char* pass = "";             // your network password
 char servername[]="celestrak.com";           // Celestrak Server
 
 WiFiClient client;
@@ -43,7 +43,7 @@ void makeRequest(){
     OD01.println("connected to server");
     Serial.print("TLE for: ");
     // Make HTTP request:
-    client.println("GET /NORAD/elements/iridium-33-debris.txt HTTP/1.0");     // rest of url for your chosen txt file, i.e extension following celestrak.com , Replace everything EXCEPT: GET HTTP/1.0
+    client.println("GET /NORAD/elements/engineering.txt HTTP/1.0");     // rest of url for your chosen txt file, i.e extension following celestrak.com , Replace everything EXCEPT: GET HTTP/1.0
     client.println();                                                         
     }
     
