@@ -17,12 +17,12 @@ WiFiClient client;
 
 void setup() {
   /* Initialize serial, I2C, and OLED Display. */
-  Serial.begin(115200);
+  Serial.begin(9600);
   Wire.pins(SDA, SCL); // set up I2C
   Wire.begin(); // start I2C
   OD01.begin(); // start the OLED display
   OD01.clear(); // clear the OLED display of old content
-  
+
   OD01.println("Attempting to connect to WiFi");
   WiFi.begin(ssid, pass);
   while ( WiFi.status() != WL_CONNECTED) {
@@ -32,7 +32,7 @@ void setup() {
 
     OD01.println("Connected to wifi");
     OD01.println("\nStarting connection...");
-    
+
     makeRequest();
     getTLE(TLEnum);
 }
@@ -44,13 +44,13 @@ void makeRequest(){
     Serial.print("TLE for: ");
     // Make HTTP request:
     client.println("GET /NORAD/elements/engineering.txt HTTP/1.0");     // rest of url for your chosen txt file, i.e extension following celestrak.com , Replace everything EXCEPT: GET HTTP/1.0
-    client.println();                                                         
+    client.println();
     }
-    
+
    // if there are incoming bytes available
    // from the server, read them and print them:
   char c;
-  int lineCounter=0; 
+  int lineCounter=0;
  while (!client.available()){
   // while loop runs while waiting for server availability
  }
@@ -66,7 +66,7 @@ void makeRequest(){
  while (client.available()) {
     c = client.read();
     Serial.print(c);
-    
+
     if (c == '\n'){
       lineCounter = lineCounter+1;
     }
@@ -95,11 +95,11 @@ void getTLE(int whichTLE) {
     Serial.print(" from file, for: ");
     // Make HTTP request:
     client.println("GET /NORAD/elements/iridium-33-debris.txt HTTP/1.0");     // rest of url for your chosen txt file, i.e extension following celestrak.com , Replace everything EXCEPT: GET HTTP/1.0
-    client.println();                                                         
+    client.println();
   }
   else
     return;
-    
+
   // Skip HTTP headers
  char endOfHeaders[] = "\r\n\r\n";
   if (!client.find(endOfHeaders))
@@ -113,14 +113,14 @@ void getTLE(int whichTLE) {
   char c;
   int startingLine = 3 * (whichTLE - 1); // the line index on which the TLE sequence starts
   int lineCounter = 0;
-  while(lineCounter <= startingLine + 2 && client.available()) { 
+  while(lineCounter <= startingLine + 2 && client.available()) {
     c = client.read();
     if(lineCounter >= startingLine) {
       Serial.print(c);
     }
     if( c == '\n' ) {
-      lineCounter += 1; 
-    } 
+      lineCounter += 1;
+    }
   }
 }
 
