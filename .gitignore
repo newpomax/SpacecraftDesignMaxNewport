@@ -1,5 +1,5 @@
+*.hex
 *.bin
+*.elf
 *.eep
 *.asv
-*.elf
-*.hex
