@@ -1,0 +1,6 @@
+Semi-major Axis (km), Eccentricity, Inclination (deg), RAAN (deg), Arg of Perigee (deg), Mean Anomaly (deg)
+6958.553066,0.007122,97.750900,344.341600,234.899600,124.548900
+R in ECI (km)
+-6599.855880,1686.753004,1154.626284
+V in ECI (km/s)
+-0.968538,1.323718,-7.443851
