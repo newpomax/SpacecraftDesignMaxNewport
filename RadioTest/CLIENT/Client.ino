@@ -18,6 +18,7 @@
 *************************************************************/
 
 #include <xCore.h>
+#include <xCS11_SDU.h>
 #include <xRL0x.h>
 #include <SPI.h>
 #include <SD.h>
